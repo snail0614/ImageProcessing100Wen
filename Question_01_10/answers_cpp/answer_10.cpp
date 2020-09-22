@@ -34,7 +34,8 @@ cv::Mat median_filter(cv::Mat img, int kernel_size){
       // get neighbor pixels
       for (int dy = -pad; dy < pad + 1; dy++){
         for (int dx = -pad; dx < pad + 1; dx++){
-          if (((y + dy) >= 0) && ((x + dx) >= 0)){
+          if (((y + dy) >= 0) && ((x + dx) >= 0) &&
+							((y + dy) < height) && ((x + dx) < width)){
             vs[count++] = (int)img.at<cv::Vec3b>(y + dy, x + dx)[c];
           }
         }
