@@ -48,7 +48,8 @@ cv::Mat gaussian_filter(cv::Mat img, double sigma, int kernel_size){
 
       for (int dy = -pad; dy < pad + 1; dy++){
         for (int dx = -pad; dx < pad + 1; dx++){
-          if (((x + dx) >= 0) && ((y + dy) >= 0)){
+          if (((x + dx) >= 0) && ((y + dy) >= 0) &&
+							((y + dy) < height) && ((x + dx) < width)){
             v += (double)img.at<cv::Vec3b>(y + dy, x + dx)[c] * kernel[dy + pad][dx + pad];
           }
         }
